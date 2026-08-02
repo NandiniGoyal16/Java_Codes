@@ -33,8 +33,9 @@ abstract class ParkingLot {
     private boolean myIsFree = true;
     private Vehicle vehicle;
 
-    public ParkingLot(VehicleType type) {
+    public ParkingLot(VehicleType type, String id) {
         myType = type;
+        myID = id;
     }
 
     public String getId() {
@@ -68,8 +69,8 @@ abstract class ParkingLot {
 class TwoWheelerParkingLot extends ParkingLot {
     private static final double RATE = 20;
 
-    public TwoWheelerParkingLot() {
-        super(VehicleType.TWO_WHEELER_PARKINGLOT);
+    public TwoWheelerParkingLot(String id) {
+        super(VehicleType.TWO_WHEELER_PARKINGLOT, id );
     }
 
     @Override
@@ -82,8 +83,8 @@ class TwoWheelerParkingLot extends ParkingLot {
 class FourWheelerParkingLot extends ParkingLot {
     private static final double RATE = 35;
 
-    public FourWheelerParkingLot() {
-        super(VehicleType.FOURWHEELER_PARKINGLOT);
+    public FourWheelerParkingLot(String id) {
+        super(VehicleType.FOURWHEELER_PARKINGLOT, id);
     }
 
     @Override
@@ -96,8 +97,8 @@ class FourWheelerParkingLot extends ParkingLot {
 class LargeVehicleParkingLot extends ParkingLot {
     private static final double RATE = 50;
 
-    public LargeVehicleParkingLot() {
-        super(VehicleType.LARGE_VEHICLE_PARKINGLOT);
+    public LargeVehicleParkingLot(String id) {
+        super(VehicleType.LARGE_VEHICLE_PARKINGLOT, id);
     }
 
     @Override
@@ -111,9 +112,10 @@ class ParkingZone {
     private String myName;
     private Map<VehicleType, List<String>> MyFreeLots;
 
-    public ParkingZone() {
+    public ParkingZone(String name) {
         myLots = new HashMap<>();
         MyFreeLots = new HashMap<>();
+        myName = name;
     }
 
     public void AddParkingLot(ParkingLot pl) {
@@ -176,6 +178,19 @@ class lld2 {
         Vehicle v1 = new Vehicle("SparkGJ0484");
         Vehicle v2 = new Vehicle("JupiterGJ8765");
 
-        
+        TwoWheelerParkingLot twoWhpl1 = new TwoWheelerParkingLot("A1");
+        TwoWheelerParkingLot twoWhpl2 = new TwoWheelerParkingLot("A2");
+
+        FourWheelerParkingLot fourWhpl1 = new FourWheelerParkingLot("A3");
+
+        ParkingZone pz1 = new ParkingZone("A");
+        ParkingZone pz2 = new ParkingZone("B");
+
+        pz1.AddParkingLot(twoWhpl1);
+        pz1.AddParkingLot(twoWhpl2);
+        pz1.AddParkingLot(fourWhpl1);
+
+      
+
     }
 }
