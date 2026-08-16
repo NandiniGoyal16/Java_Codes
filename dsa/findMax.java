@@ -5,7 +5,7 @@ public class findMax {
         int maxelement = arr[0];
         for(int i = 1; i < arr.length; i++) {
             if(arr[i] > maxelement) {
-                maxelement = arr[i];
+                maxelement = Math.max(maxelement, arr[i]);
             }
         }
         return maxelement;
